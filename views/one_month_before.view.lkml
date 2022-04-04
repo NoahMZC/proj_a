@@ -73,7 +73,6 @@ view: one_month_before {
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_clean_transported_cnt ;;
   }
 
-  ###
   measure: sum_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
     type: sum
     label: "전달 유동인원수 합"
