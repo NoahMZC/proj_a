@@ -56,7 +56,29 @@ view: bm_f_passenger_subway_dd {
     type: string
     sql: ${TABLE}.tm_range_cd ;;
   }
+  ###
+  measure: sum_foot_traffic_cnt {
+    type: sum
+    label: "유동인원수 합"
+    sql: ${TABLE}.foot_traffic_cnt ;;
+  }
 
+  measure: sum_getoff_passenger_cnt {
+    type: sum
+    label: "하차인원수 합"
+    sql: ${TABLE}.getoff_passenger_cnt ;;
+  }
+
+  measure: sum_passenger_cnt {
+    type: sum
+    label: "승차인원수"
+    sql: ${TABLE}.passenger_cnt ;;
+  }
+  measure: sum_clean_transported_cnt {
+    type: sum
+    label: "순수송인원수"
+    sql: ${TABLE}.clean_transported_cnt ;;
+  }
   measure: count {
     type: count
     drill_fields: []

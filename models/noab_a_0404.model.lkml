@@ -16,7 +16,19 @@ explore: bm_d_passenger_type_cd {}
 
 explore: bm_d_holiday_dt {}
 
-explore: bm_f_passenger_subway_dd {}
+explore: bm_f_passenger_subway_dd {
+  join: date_foot {
+    type: inner
+    sql_on: ${bm_f_passenger_subway_dd.dt_date} = ${date_foot.bm_f_passenger_subway_dd_dt_date} ;;
+    relationship: many_to_one
+  }
+  join: one_month_before {
+    type: left_outer
+    sql_on: ${bm_f_passenger_subway_dd.passenger_type_cd} = ${one_month_before.bm_f_passenger_subway_dd_passenger_type_cd}
+           AND ${bm_f_passenger_subway_dd.dt_date} - INTERVAL '1' MONTH = ${one_month_before.bm_f_passenger_subway_dd_dt_date};;
+          relationship: many_to_one
+  }
+}
 
 explore: bm_d_transfer_station {}
 
