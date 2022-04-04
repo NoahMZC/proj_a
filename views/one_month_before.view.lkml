@@ -36,9 +36,13 @@ view: one_month_before {
     type: count
     drill_fields: [detail*]
   }
-
+  dimension: id {
+    primary_key: yes
+    sql:  ${TABLE}.bm_f_passenger_subway_dd_dt_date ;;
+  }
   dimension: date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
     type: number
+    label: "전달 전체 합산"
     sql: ${TABLE}.date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
   }
 
@@ -55,53 +59,57 @@ view: one_month_before {
 
   dimension: bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
     type: number
+    label: "전달 유동인원수"
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
   }
 
   dimension: bm_f_passenger_subway_dd_sum_getoff_passenger_cnt {
     type: number
+    label: "전달 하차"
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_getoff_passenger_cnt ;;
   }
 
   dimension: bm_f_passenger_subway_dd_sum_passenger_cnt {
     type: number
+    label: "전달 승차"
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_passenger_cnt ;;
   }
 
   dimension: bm_f_passenger_subway_dd_sum_clean_transported_cnt {
     type: number
+    label: "전달 순수송"
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_clean_transported_cnt ;;
   }
 
-  measure: sum_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
-    type: sum
-    label: "전달 유동인원수 합"
-    sql: ${TABLE}.bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
-  }
+  # measure: sum_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
+  #   type: sum
+  #   label: "전달 유동인원수 합"
+  #   sql: ${TABLE}.bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
+  # }
 
-  measure: sum_bm_f_passenger_subway_dd_sum_getoff_passenger_cnt {
-    type: sum
-    label: "전달 하차 인원수 합"
-    sql: ${TABLE}.bm_f_passenger_subway_dd_sum_getoff_passenger_cnt ;;
-  }
+  # measure: sum_bm_f_passenger_subway_dd_sum_getoff_passenger_cnt {
+  #   type: sum
+  #   label: "전달 하차 인원수 합"
+  #   sql: ${TABLE}.bm_f_passenger_subway_dd_sum_getoff_passenger_cnt ;;
+  # }
 
-  measure: sum_bm_f_passenger_subway_dd_sum_passenger_cnt {
-    type: sum
-    label: "전달 승차인원수 합"
-    sql: ${TABLE}.bm_f_passenger_subway_dd_sum_passenger_cnt ;;
-  }
+  # measure: sum_bm_f_passenger_subway_dd_sum_passenger_cnt {
+  #   type: sum
+  #   label: "전달 승차인원수 합"
+  #   sql: ${TABLE}.bm_f_passenger_subway_dd_sum_passenger_cnt ;;
+  # }
 
-  measure: sum_bm_f_passenger_subway_dd_sum_clean_transported_cnt {
-    type: sum
-    label: "전달 순수송인원수 합"
-    sql: ${TABLE}.bm_f_passenger_subway_dd_sum_clean_transported_cnt ;;
-  }
+  # measure: sum_bm_f_passenger_subway_dd_sum_clean_transported_cnt {
+  #   type: sum
+  #   label: "전달 순수송인원수 합"
+  #   sql: ${TABLE}.bm_f_passenger_subway_dd_sum_clean_transported_cnt ;;
+  # }
 
-  measure: sum_date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
-    type: sum
-    label: "전달 나눌거 총합"
-    sql: ${TABLE}.date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
-  }
+  # measure: sum_date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
+  #   type: sum
+  #   label: "전달 나눌거 총합"
+  #   sql: ${TABLE}.date_foot_bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
+  # }
 
 
   set: detail {

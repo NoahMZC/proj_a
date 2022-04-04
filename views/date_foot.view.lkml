@@ -12,7 +12,10 @@ view: date_foot {
       1 DESC
       ;;
   }
-
+  dimension: id {
+    primary_key: yes
+    sql:  ${TABLE}.bm_f_passenger_subway_dd_dt_date;;
+  }
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -24,11 +27,16 @@ view: date_foot {
     sql: ${TABLE}.bm_f_passenger_subway_dd_dt_date ;;
   }
 
-  measure: bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
-    type: sum
+  dimension: bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
+    type: number
     label: "총 합산값. 나눌거"
     sql: ${TABLE}.bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
   }
+  # measure: bm_f_passenger_subway_dd_sum_foot_traffic_cnt {
+  #   type: sum
+  #   label: "총 합산값. 나눌거"
+  #   sql: ${TABLE}.bm_f_passenger_subway_dd_sum_foot_traffic_cnt ;;
+  # }
 
   set: detail {
     fields: [bm_f_passenger_subway_dd_dt_date, bm_f_passenger_subway_dd_sum_foot_traffic_cnt]
